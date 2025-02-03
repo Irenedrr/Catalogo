@@ -11,11 +11,13 @@ public partial class CategoryViewModel(IServiceRepository<Category> _categorySer
     [ObservableProperty]
     private ObservableCollection<Category> _categories = new(_categoryService.ObtenerTodos());
     [ObservableProperty] private string nombre;
+    private Category? _selectedCategory;
 
 
     private void Limpiar()
     {
         Nombre = string.Empty;
+        _selectedCategory = null;
     }
 
     [RelayCommand]
@@ -32,6 +34,22 @@ public partial class CategoryViewModel(IServiceRepository<Category> _categorySer
 
         _categoryService.Agregar(category);
         Categories.Add(category);
+
+        Limpiar();
+
+    }
+    [RelayCommand]
+    private void DeleteProduct(Category category)
+    {
+        if (category == null)
+        {
+            return;
+        }
+
+
+        _categoryService.Eliminar(category);
+        Categories.Remove(category);
+
 
         Limpiar();
 
