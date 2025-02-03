@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Catalogo.Views.ProductView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:vm="clr-namespace:Catalogo.ViewModels">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <ListBox Grid.Column="0" 
+                 ItemsSource="{Binding Products}" 
+                 DisplayMemberPath="Nombre" 
+                 SelectedItem="{Binding SelectedProduct}" />
+        
+        <StackPanel Grid.Column="1" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top">
+            
+            <TextBlock Text="Formulario de Producto" FontWeight="Bold" FontSize="16"  />
+
+           
+            <TextBlock Text="Nombre:" />
+            <TextBox Text="{Binding Nombre}"  Width="200" />
+
+            
+            <TextBlock Text="Descripción:" />
+            <TextBox Text="{Binding Descripcion}"  Width="200" />
+
+            
+            <TextBlock Text="Precio:" />
+            <TextBox Text="{Binding Precio}"  Width="200" />
+
+            
+            <TextBlock Text="Categoría:" />
+            <ComboBox ItemsSource="{Binding Categories}" 
+                      DisplayMemberPath="Nombre" 
+                      SelectedItem="{Binding SelectedCategory}" 
+                      Width="200" />
+
+            <!-- Cuadro gris para subir foto -->
+            <TextBlock Text="Foto del producto:"  />
+            <Border BorderBrush="Gray" BorderThickness="1" Background="#E0E0E0" Height="100" Width="100" Margin="0,0,0,10" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="Subir Foto" HorizontalAlignment="Center" FontSize="10" />
+                    <Button Content="Seleccionar Archivo" 
+                            Command="{Binding UploadPhotoCommand}" 
+                            FontSize="10" Padding="5" Margin="5,0,5,0" />
+                </StackPanel>
+            </Border>
+
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Button Command="{Binding AddProductCommand}" Content="Añadir" Margin="0,0,5,0" Width="60" />
+                <Button Command="{Binding EditProductCommand}" Content="Modificar" Margin="0,0,5,0" Width="80" />
+                <Button Command="{Binding DeleteProductCommand}" Content="Eliminar" Width="80" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
