@@ -19,12 +19,12 @@
             <TextBlock Text="Formulario de Categoria" FontWeight="Bold" FontSize="16"  />
 
             <TextBlock Text="Nombre:" />
-            <TextBox Text="{Binding Nombre}" Margin="0,0,0,10"  Width="200" />
+            <TextBox Text="{Binding SelectedCategory.Nombre, Mode=TwoWay}" Margin="0,0,0,10"  Width="200" />
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
-                <Button Command="{Binding AddProductCommand}" Content="Añadir" Margin="0,0,5,0" Width="60" />
-                <Button Command="{Binding EditProductCommand}" Content="Modificar" Margin="0,0,5,0" Width="80" />
-                <Button Command="{Binding DeleteProductCommand}" Content="Eliminar" Width="80" />
+                <Button Command="{Binding AddCategoryCommand}" Content="Añadir" Margin="0,0,5,0" Width="60" />
+                <Button Command="{Binding EditCategoryCommand}" Content="Modificar" Margin="0,0,5,0" Width="80" />
+                <Button Command="{Binding DeleteCategoryCommand}" Content="Eliminar" Width="80" />
             </StackPanel>
         </StackPanel>
     </Grid>

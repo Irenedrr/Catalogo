@@ -10,49 +10,45 @@ public partial class CategoryViewModel(IServiceRepository<Category> _categorySer
 {
     [ObservableProperty]
     private ObservableCollection<Category> _categories = new(_categoryService.ObtenerTodos());
-    [ObservableProperty] private string nombre;
-    private Category? _selectedCategory;
 
+    [ObservableProperty]
+    private Category? selectedCategory = new();
 
     private void Limpiar()
     {
-        Nombre = string.Empty;
-        _selectedCategory = null;
+        SelectedCategory = new Category();
     }
 
     [RelayCommand]
-    private void AddProduct(object parameter)
+    private void AddCategory()
     {
-        if (string.IsNullOrWhiteSpace(Nombre))
+        if (SelectedCategory == null || string.IsNullOrWhiteSpace(SelectedCategory.Nombre))
             return;
 
-        var category = new Category
-        {
-            Nombre = Nombre
-
-        };
-
-        _categoryService.Agregar(category);
-        Categories.Add(category);
-
+        _categoryService.Agregar(SelectedCategory);
+        Categories.Add(SelectedCategory);
         Limpiar();
-
     }
+
     [RelayCommand]
-    private void DeleteProduct(Category category)
+    private void EditCategory()
     {
-        if (category == null)
-        {
+        if (SelectedCategory == null)
             return;
-        }
 
-
-        _categoryService.Eliminar(category);
-        Categories.Remove(category);
-
-
+        _categoryService.Actualizar(SelectedCategory);
         Limpiar();
+    }
 
+    [RelayCommand]
+    private void DeleteCategory()
+    {
+        if (SelectedCategory == null)
+            return;
+
+        _categoryService.Eliminar(SelectedCategory);
+        Categories.Remove(SelectedCategory);
+        Limpiar();
     }
 
 }
