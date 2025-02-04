@@ -20,7 +20,7 @@
 
            
             <TextBlock Text="Nombre:" />
-            <TextBox Text="{Binding Nombre}"  Width="200" />
+            <TextBox Text="{Binding SelectedProduct.Nombre, Mode=TwoWay}"  Width="200" />
 
             
             <TextBlock Text="Descripción:" />
