@@ -24,11 +24,11 @@
 
             
             <TextBlock Text="Descripción:" />
-            <TextBox Text="{Binding Descripcion}"  Width="200" />
+            <TextBox Text="{Binding DescripcionProducto}"  Width="200" />
 
             
             <TextBlock Text="Precio:" />
-            <TextBox Text="{Binding Precio}"  Width="200" />
+            <TextBox Text="{Binding PrecioProducto}"  Width="200" />
 
             
             <TextBlock Text="Categoría:" />

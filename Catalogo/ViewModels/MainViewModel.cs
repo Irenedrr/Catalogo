@@ -12,7 +12,7 @@ public partial class MainViewModel(IServiceRepository<Category> _categoryService
 
     public CategoryViewModel CategoryViewModel { get; } = new CategoryViewModel(_categoryService);
     public HomeViewModel HomeViewModel { get; } = new HomeViewModel();
-    public ProductViewModel ProductViewModel { get; } = new ProductViewModel(_productService);
+    public ProductViewModel ProductViewModel { get; } = new ProductViewModel(_productService, _categoryService);
 
    
 
