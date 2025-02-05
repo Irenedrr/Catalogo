@@ -15,9 +15,14 @@ public class ProductRepository(AppDbContext context) : IRepository<Product>
 
     public void Agregar(Product obj)
     {
+        if (string.IsNullOrEmpty(obj.Descripcion))
+        {
+            throw new ArgumentException("Descripcion cannot be null or empty");
+        }
         _context.Products.Add(obj);
         _context.SaveChanges();
     }
+
 
     public void Eliminar(Product obj)
     {

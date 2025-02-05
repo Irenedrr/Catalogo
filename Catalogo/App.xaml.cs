@@ -42,11 +42,11 @@ public partial class App : Application
             {
                 dbContext.Categories.Add(new Category { Nombre = "Cosas" });
                 dbContext.Categories.Add(new Category { Nombre = "Más cosas" });
-                dbContext.Products.Add(new Product { Nombre = "Cosa 1", Descripcion = "Descripción de la cosa", Precio = 10, CategoryId = 1,Category = null });
-                dbContext.Products.Add(new Product { Nombre = "Cosa 2", Descripcion = "Descripción de la cosa", Precio = 10, CategoryId = 2, Category = null });
-                dbContext.Products.Add(new Product { Nombre = "Cosa 3", Descripcion = "Descripción de la cosa", Precio = 10, CategoryId = 1, Category = null });
-                dbContext.Products.Add(new Product { Nombre = "Cosa 4", Descripcion = "Descripción de la cosa", Precio = 10, CategoryId = 1, Category = null });
-                dbContext.Products.Add(new Product { Nombre = "Cosa 5", Descripcion = "Descripción de la cosa",Precio = 10, CategoryId = 2, Category = null });
+                dbContext.Products.Add(new Product { Nombre = "Cosa 1", Descripcion = "Descripción de la cosa", Precio = 10, CategoryId = 1,Category = null,ImageUrl= "https://media.istockphoto.com/id/120492078/es/foto/tipo-banana.jpg?s=612x612&w=0&k=20&c=LCXu4PizZHCgQvPLFTSzcLzPLOxOCUq-22dN6BtbZh8=" });
+                dbContext.Products.Add(new Product { Nombre = "Cosa 2", Descripcion = "Descripción de la cosa", Precio = 10, CategoryId = 2, Category = null, ImageUrl = "https://media.istockphoto.com/id/120492078/es/foto/tipo-banana.jpg?s=612x612&w=0&k=20&c=LCXu4PizZHCgQvPLFTSzcLzPLOxOCUq-22dN6BtbZh8=" });
+                dbContext.Products.Add(new Product { Nombre = "Cosa 3", Descripcion = "Descripción de la cosa", Precio = 10, CategoryId = 1, Category = null , ImageUrl = "https://media.istockphoto.com/id/120492078/es/foto/tipo-banana.jpg?s=612x612&w=0&k=20&c=LCXu4PizZHCgQvPLFTSzcLzPLOxOCUq-22dN6BtbZh8=" });
+                dbContext.Products.Add(new Product { Nombre = "Cosa 4", Descripcion = "Descripción de la cosa", Precio = 10, CategoryId = 1, Category = null, ImageUrl = "https://media.istockphoto.com/id/120492078/es/foto/tipo-banana.jpg?s=612x612&w=0&k=20&c=LCXu4PizZHCgQvPLFTSzcLzPLOxOCUq-22dN6BtbZh8=" });
+                dbContext.Products.Add(new Product { Nombre = "Cosa 5", Descripcion = "Descripción de la cosa",Precio = 10, CategoryId = 2, Category = null, ImageUrl = "https://media.istockphoto.com/id/120492078/es/foto/tipo-banana.jpg?s=612x612&w=0&k=20&c=LCXu4PizZHCgQvPLFTSzcLzPLOxOCUq-22dN6BtbZh8=" });
             }
 
             dbContext.SaveChanges();
