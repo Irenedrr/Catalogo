@@ -23,6 +23,11 @@
                 <v:ProductView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:GraphViewModel}">
+                <v:GraphView/>
+            </DataTemplate>
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

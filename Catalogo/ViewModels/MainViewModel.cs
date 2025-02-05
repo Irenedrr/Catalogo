@@ -15,6 +15,7 @@ public partial class MainViewModel(IServiceRepository<Category> _categoryService
     public CategoryViewModel CategoryViewModel { get; } = new CategoryViewModel(_categoryService);
     public HomeViewModel HomeViewModel { get; } = new HomeViewModel(_productService, _categoryService);
     public ProductViewModel ProductViewModel { get; } = new ProductViewModel(_productService, _categoryService);
+    public GraphViewModel GraphViewModel { get; } = new GraphViewModel();
 
    
 
@@ -26,6 +27,9 @@ public partial class MainViewModel(IServiceRepository<Category> _categoryService
 
     [RelayCommand]
     private void ActivateProductView() => ActiveView = ProductViewModel;
+
+    [RelayCommand]
+    private void ActivateGraphView() => ActiveView = GraphViewModel;
 
     [RelayCommand]
     private void Exit()
