@@ -3,7 +3,58 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:vm="clr-namespace:Catalogo.ViewModels">
-    <Grid>
-        <TextBlock Text="HomeView" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="130" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="130" />
+        </Grid.RowDefinitions>
+
+        
+        <TextBlock Text="Productos" FontSize="24" FontWeight="Bold" Margin="5" Grid.Row="0" />
+
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" Margin="5"  ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate >
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Gray" Padding="5" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding ImageUrl}" Width="60" Height="60" Margin="5" />
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="14" />
+                                <TextBlock Text="{Binding Descripcion}" FontSize="12" />
+                                <TextBlock Text="{Binding Precio, StringFormat='C'}" Foreground="Green" FontSize="12" />
+                                <TextBlock Text="Categoría: {Binding Category.Nombre}" FontSize="12" Foreground="Gray" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+       
+        <TextBlock Text="Categorías" FontSize="24" FontWeight="Bold" Margin="5" Grid.Row="2" />
+
+        <!-- Lista de Categorías -->
+        <ListBox Grid.Row="3" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Margin="5" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Gray" Padding="5" Margin="5">
+                        <TextBlock Text="{Binding Nombre}" FontSize="14" FontWeight="Bold" Padding="5" />
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

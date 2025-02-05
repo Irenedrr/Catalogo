@@ -11,7 +11,7 @@ public partial class MainViewModel(IServiceRepository<Category> _categoryService
     private object _activeView;
 
     public CategoryViewModel CategoryViewModel { get; } = new CategoryViewModel(_categoryService);
-    public HomeViewModel HomeViewModel { get; } = new HomeViewModel();
+    public HomeViewModel HomeViewModel { get; } = new HomeViewModel(_productService, _categoryService);
     public ProductViewModel ProductViewModel { get; } = new ProductViewModel(_productService, _categoryService);
 
    
