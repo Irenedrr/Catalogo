@@ -1,4 +1,6 @@
-﻿using Catalogo.Models;
+﻿using System;
+using System.Windows;
+using Catalogo.Models;
 using Catalogo.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -24,4 +26,10 @@ public partial class MainViewModel(IServiceRepository<Category> _categoryService
 
     [RelayCommand]
     private void ActivateProductView() => ActiveView = ProductViewModel;
+
+    [RelayCommand]
+    private void Exit()
+    {
+        Application.Current.Shutdown();
+    }
 }
