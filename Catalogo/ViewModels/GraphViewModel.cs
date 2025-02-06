@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using Catalogo.Models;
 using Catalogo.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
-using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore;
-using LiveChartsCore.Kernel.Sketches;
+using LiveChartsCore.SkiaSharpView;
 
 namespace Catalogo.ViewModels;
 
@@ -18,8 +12,8 @@ public partial class GraphViewModel: ObservableObject
     private readonly IServiceRepository<Product> _productService;
     private readonly IServiceRepository<Category> _categoryService;
 
-    [ObservableProperty]
-    private ObservableCollection<ISeries> _PieSeries = new();
+    public ObservableCollection<ISeries> PieSeries { get; set; } = new();
+
 
     public GraphViewModel(IServiceRepository<Category> categoryService, IServiceRepository<Product> productService)
     {
@@ -30,18 +24,26 @@ public partial class GraphViewModel: ObservableObject
 
     private void ConfigurePieSeries()
     {
+        var products = _productService.ObtenerTodos();
 
-        var groupedProducts = _productService.ObtenerTodos()
-            .GroupBy(p => p.Category.Nombre)
+        if (products == null || !products.Any())
+        {
+            return; // No hay productos, evitamos errores
+        }
+
+        var groupedProducts = products
+            .GroupBy(p => p.Category?.Nombre ?? "Sin Categoría")
             .Select(group => new { Name = group.Key, Count = group.Count() });
 
         foreach (var group in groupedProducts)
         {
-            PieSeries.Add(new PieSeries
+            PieSeries.Add(new PieSeries<int>
             {
                 Name = group.Name,
-                Values = new[] { (double)group.Count }  // Convertimos Count a double
+                Values = new[] { group.Count }
             });
+
         }
     }
+
 }
